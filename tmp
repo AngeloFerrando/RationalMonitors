@@ -1,0 +1,46 @@
+Transition
+0 q2p1iiii q2p1s4r3 q3iis1ii q3p4s1r2 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 iip4iir2 q3p4s1r2 iiiis4r3 q2p1s4r3
+0 0 iiiis4r3 q3iis1ii q3p4s1r2 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 iip4iir2 q3p4s1r2 iiiis4r3 iiiis4r3
+0 0 0 q3iis1ii q3p4s1r2 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 iip4iir2 q3p4s1r2 0 0
+0 q2p1iiii q2p1s4r3 0 iip4iir2 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 iip4iir2 iip4iir2 iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1s4r3 0 0 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 0 0 iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1s4r3 q3iis1ii q3p4s1r2 0 iip3s2ii iip3s2ii iip3s2ii iip4iir2 q3p4s1r2 iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1s4r3 q3iis1ii q3p4s1r2 0 0 0 0 iip4iir2 q3p4s1r2 iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1s4r3 q3iis1ii q3p4s1r2 q4iiiir1 q4iiiir1 0 q4iiiir1 iip4iir2 q3p4s1r2 iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1s4r3 q3iis1ii q3p4s1r2 0 0 0 0 iip4iir2 q3p4s1r2 iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1s4r3 q3iis1ii q3iis1ii q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 0 q3iis1ii iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1s4r3 0 0 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 0 0 iiiis4r3 q2p1s4r3
+0 q2p1iiii q2p1iiii q3iis1ii q3p4s1r2 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 iip4iir2 q3p4s1r2 0 q2p1iiii
+0 0 0 q3iis1ii q3p4s1r2 q4iiiir1 q4p3s2r1 iip3s2ii q4p3s2r1 iip4iir2 q3p4s1r2 0 0
+Name_State
+s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12
+Initial_State
+s0
+Costs_for_actions_split
+q2p1iiii s0$1,1,1,1;s3$1,1,1,1;s4$1,1,1,1;s5$1,1,1,1;s6$1,1,1,1;s7$1,1,1,1;s8$1,1,1,1;s9$1,1,1,1;s10$1,1,1,1;s11$1,1,1,1
+q2p1s4r3 s0$1,1,1,1;s3$1,1,1,1;s4$1,1,1,1;s5$1,1,1,1;s6$1,1,1,1;s7$1,1,1,1;s8$1,1,1,1;s9$1,1,1,1;s10$1,1,1,1
+q3iis1ii s0$1,1,1,1;s1$1,1,1,1;s2$1,1,1,1;s5$1,1,1,1;s6$1,1,1,1;s7$1,1,1,1;s8$1,1,1,1;s9$1,1,1,1;s11$1,1,1,1;s12$1,1,1,1
+q3p4s1r2 s0$1,1,1,1;s1$1,1,1,1;s2$1,1,1,1;s5$1,1,1,1;s6$1,1,1,1;s7$1,1,1,1;s8$1,1,1,1;s11$1,1,1,1;s12$1,1,1,1
+q4iiiir1 s0$1,1,1,1;s1$1,1,1,1;s2$1,1,1,1;s3$1,1,1,1;s4$1,1,1,1;s7$1,1,1,1;s9$1,1,1,1;s10$1,1,1,1;s11$1,1,1,1;s12$1,1,1,1
+q4p3s2r1 s0$1,1,1,1;s1$1,1,1,1;s2$1,1,1,1;s3$1,1,1,1;s4$1,1,1,1;s9$1,1,1,1;s10$1,1,1,1;s11$1,1,1,1;s12$1,1,1,1
+iip3s2ii s0$1,1,1,1;s1$1,1,1,1;s2$1,1,1,1;s3$1,1,1,1;s4$1,1,1,1;s5$1,1,1,1;s9$1,1,1,1;s10$1,1,1,1;s11$1,1,1,1;s12$1,1,1,1
+iip4iir2 s0$1,1,1,1;s1$1,1,1,1;s2$1,1,1,1;s3$1,1,1,1;s5$1,1,1,1;s6$1,1,1,1;s7$1,1,1,1;s8$1,1,1,1;s11$1,1,1,1;s12$1,1,1,1
+iiiis4r3 s0$1,1,1,1;s1$1,1,1,1;s3$1,1,1,1;s4$1,1,1,1;s5$1,1,1,1;s6$1,1,1,1;s7$1,1,1,1;s8$1,1,1,1;s9$1,1,1,1;s10$1,1,1,1
+Atomic_propositions
+q1 q2 q3 q4 p1 p2 p3 p4 s1 s2 s3 s4 r1 r2 r3 r4
+Labelling
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0 
+0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 
+0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 
+0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 
+0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+0 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0 
+Number_of_agents
+4
