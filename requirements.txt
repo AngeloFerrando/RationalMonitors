@@ -1,0 +1,2 @@
+spot==0.1a
+vitamin_model_checker==0.8
