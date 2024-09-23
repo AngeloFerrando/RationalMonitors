@@ -12,12 +12,12 @@
             "console": "integratedTerminal",
             "justMyCode": false,
             "args": [
-                "Fp,Gq,s U r,F(s&&r)",
-                "[s,p,q,r]",
-                "[q],[p],[s],[r]",
+                "b && Fa && FGe && (Gd U c),!(c || (b U a)) U !(e U XGd)",
+                "[a,c,d,b,e]",
+                "[b,a],[e,c,d]",
                 "16",
                 "10",
-                "trace"
+                "tmp.txt"
             ]
         }
     ]

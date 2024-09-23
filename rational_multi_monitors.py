@@ -23,11 +23,17 @@ class RationalMultiMonitors:
         for i in range(len(self.__monitors)):
             verdicts.append(self.__monitors[i].next(ev)) # we do not need to project ev because sim in monitor has already been updated, so the monitor knows already how to handle the event properly
         return verdicts
-    def __revise_and_evaluate(self):
+    def __revise_and_evaluate(self, modifier=0):
         payoffs = []
         new_atoms = []
-        for monitor in self.__monitors:
-            payoffs.append(RationalMultiMonitors.get_payoffs(spot.formula(str(monitor)), monitor.get_sim()))
+        for i in range(len(self.__monitors)):
+            payoff = RationalMultiMonitors.get_payoffs(spot.formula(str(self.__monitors[i])), self.__backup_sim[i])
+            for _ in range(modifier):
+                for k in payoff:
+                    if payoff[k] > 0:
+                        payoff[k] = 0
+                        break
+            payoffs.append(payoff)
         sim_to_breaks = []
         for payoff in payoffs:
             sim_to_break = RationalMultiMonitors.knapsack(payoff, int(self.__resource_bound / len(self.__monitors)))
@@ -50,7 +56,12 @@ class RationalMultiMonitors:
                         new_sim.append(s)
                 self.__monitors[i].set_sim(new_sim)
         else:
-            print('No agreement could be found!')
+            # print('No agreement could be found!')
+            if modifier <= 2:
+                # print('Try again!')
+                self.__revise_and_evaluate(modifier+1)
+            # else:
+                # print('Give Up!')
         # print(f'broken sim: {sim_to_break}')
         # self.__sim = [s for s in self.__sim_backup if s not in sim_to_break]
     def __solve_agreement_game(self, rabatl):
@@ -58,9 +69,14 @@ class RationalMultiMonitors:
         return 'True' in result['initial_state']
     def __generate_rabatl(self, monitor_atoms):
         rabatl = '<' + ','.join([str(i) for i in range(1, len(self.__monitors)+1)]) + f'><{int(self.__resource_bound)}>F('
+        rabatl_l = []
         for i in range(1, len(monitor_atoms)+1):
-            rabatl += ' && '.join([atom+f'{i}' for atom in monitor_atoms[i-1]]) + ' && '
-        rabatl = rabatl[:-4]
+            if monitor_atoms[i-1]:
+                rabatl_l.append(' && '.join([atom+f'{i}' for atom in monitor_atoms[i-1]]))
+        if rabatl_l:
+            rabatl += ' && '.join(rabatl_l)
+        else:
+            rabatl_l += 'false'
         rabatl += ')'
         return rabatl
     def __generate_rabcgs(self):
@@ -86,18 +102,24 @@ class RationalMultiMonitors:
         for state1 in list_of_pairs:
             transitions_state = []
             for state2 in list_of_pairs:
-                exchanges = [item for item in state2 if item not in state1]
                 monitors_actions = []
-                for monitor_visibility in monitors_visibility:
-                    for exchange in exchanges:
-                        if exchange[0] in monitor_visibility:
-                            monitors_actions.append(f'{exchange[0]}')
-                            break
-                        elif exchange[1] in monitor_visibility:
-                            monitors_actions.append(f'{exchange[1]}')
-                            break
-                    else:
-                        monitors_actions.append('ii')
+                if not [item for item in state1 if item not in state2]:
+                    exchanges = [item for item in state2 if item not in state1]                
+                    for monitor_visibility in monitors_visibility:
+                        found = False
+                        for exchange in exchanges:
+                            if exchange[0] in monitor_visibility:
+                                monitors_actions.append(f'{exchange[0]}')
+                                found = True
+                                # break
+                            elif exchange[1] in monitor_visibility:
+                                monitors_actions.append(f'{exchange[1]}')
+                                found = True
+                                # break
+                        if not found:
+                            monitors_actions.append('ii')
+                        # else:
+                        #     monitors_actions.append('ii')
                 if len(monitors_actions) != len(monitors_visibility):
                     transitions_state.append('0')
                 elif monitors_actions == ['ii']*4:
@@ -245,7 +267,8 @@ Number_of_agents
                     # Remove the paired elements from remaining items
                     remaining_items_copy = remaining_items.copy()
                     remaining_items_copy.remove(pair[0])
-                    remaining_items_copy.remove(pair[1])
+                    if pair[1] in remaining_items_copy:
+                        remaining_items_copy.remove(pair[1])
                     
                     # Add the pair and recurse
                     current_pairs.append(pair)
