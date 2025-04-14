@@ -94,7 +94,13 @@ class RationalMultiMonitors:
                 if ok:
                     monitor_visibility.append(ap)
             monitors_visibility.append(monitor_visibility)
+        #print(monitors_visibility)
         list_of_pairs = RationalMultiMonitors.generate_pairings(monitors_visibility)
+        list_of_pairs = [[(pair[0][:-1], pair[1][:-1]) for pair in pairs] for pairs in list_of_pairs]
+        #print(list_of_pairs)
+        # for pair in list_of_pairs:
+        #     if len(pair) >= 3:
+        #         print(pair)
         states = ' '.join([f's{i}' for i in range(len(list_of_pairs))])
         transitions = []
         costs = {}
@@ -104,7 +110,7 @@ class RationalMultiMonitors:
             for state2 in list_of_pairs:
                 monitors_actions = []
                 if not [item for item in state1 if item not in state2]:
-                    exchanges = [item for item in state2 if item not in state1]                
+                    exchanges = [item for item in state2 if item not in state1]       
                     for monitor_visibility in monitors_visibility:
                         found = False
                         for exchange in exchanges:
@@ -212,7 +218,7 @@ Number_of_agents
         # Convert input dictionaries to lists for easier indexing
         atoms = list(payoffs.keys())
         payoff_values = [payoffs[atom] for atom in atoms]
-        cost_values = [4 for atom in atoms]
+        cost_values = [1 for atom in atoms]
         n = len(atoms)
         
         # Initialize the DP table
@@ -253,6 +259,14 @@ Number_of_agents
                         for a in lst1:
                             for b in lst2:
                                 pair = (a, b) if a < b else (b, a)
+                                for k1 in range(1, len(lists_of_lists)+1):
+                                    if pair[0] in lists_of_lists[k1-1]:
+                                        break
+                                for k2 in range(1, len(lists_of_lists)+1):
+                                    if pair[1] in lists_of_lists[k2-1]:
+                                        break
+                                pair = (pair[0] + str(k2), pair[1] + str(k1))
+                                #print(pair)
                                 pairs.append(pair)
             return pairs
         
@@ -279,10 +293,10 @@ Number_of_agents
 
         # Step 1: Generate all pairs from the lists
         pairs = get_pairs(lists_of_lists)
-
+        
         # Step 2: Backtrack to generate all valid combinations of pairs
         result = []
-        all_items = set(item for sublist in lists_of_lists for item in sublist)
+        all_items = set(item+str(i) for sublist in lists_of_lists for item in sublist for i in range(1, len(lists_of_lists)+1))
         
         backtrack([], all_items)
         

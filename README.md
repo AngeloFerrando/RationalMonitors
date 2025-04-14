@@ -59,17 +59,17 @@ The `main.py` script is used to generate rational multi-monitors for monitoring 
 Below is an example command for running the `main.py` script:
 
 ```bash
-python main.py "G(p -> Fq),G(q -> Fr)" "[p, q, r]" "[p], [q]" 10 5 trace1.txt
+python main.py "p -> Fq,G(q -> Xr)" "[p, q, r]" "[p, r], [q]" 10 5 trace
 ```
 
 ### Input Details:
 
-- **LTL Formula**: `"G(p -> Fq), G(q -> Fr)"` – This formula monitors for the eventual truth of `q` and `r` after `p` and `q`, respectively.
+- **LTL Formula**: `"p -> Fq, G(q -> Xr)"` – This formula monitors for the eventual truth of `q` and `r` after `p` and `q`, respectively.
 - **Atomic Propositions**: `[p, q, r]` – These are the atomic propositions involved in the formulas.
 - **Visibility**: `[p], [q]` – Each monitor only has partial visibility: one sees `p`, the other sees `q`.
 - **Resource Bound**: `10.0` – The resource constraint for monitoring.
 - **Time Window**: `5` – The number of time steps over which monitoring is performed.
-- **Trace File**: The events to be monitored are contained in `trace1.txt`.
+- **Trace File**: The events to be monitored are contained in `trace`.
 
 ### Trace File Format:
 

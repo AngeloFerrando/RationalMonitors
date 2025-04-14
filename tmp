@@ -1,17 +1,20 @@
 Transition
-iiii p2q1
-0 iiii
+iiii r2q1 p2q1
+0 iiii 0
+0 0 iiii
 Name_State
-s0 s1
+s0 s1 s2
 Initial_State
 s0
 Costs_for_actions_split
-iiii s0$1,1;s1$1,1
+iiii s0$1,1;s1$1,1;s2$1,1
+r2q1 s0$1,1
 p2q1 s0$1,1
 Atomic_propositions
-q1 q2 p1 p2 r1 r2
+q1 q2 r1 r2 p1 p2
 Labelling
 0 0 0 0 0 0 
 1 0 0 1 0 0 
+1 0 0 0 0 1 
 Number_of_agents
 2
