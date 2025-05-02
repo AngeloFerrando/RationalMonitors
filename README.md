@@ -24,7 +24,7 @@ To run this project locally, follow these steps:
    git clone https://github.com/AngeloFerrando/RationalMonitors.git
    ```
 
-2. Install the required dependencies. You can use `pip` to install packages listed in a `requirements.txt` file if it exists. Currently, there doesn't seem to be one, so ensure you have Python 3.x installed.
+2. Install the required dependencies. You can use `pip` to install packages listed in a `requirements.txt` file if it exists.
 
    ```bash
    pip install -r requirements.txt
